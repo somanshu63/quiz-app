@@ -419,3 +419,7 @@ td {
   left: 20%;
   right: 20%;
 }
+.continue {
+  background: url(/public/result.jpg);
+  background-size: cover;
+}

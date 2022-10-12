@@ -18,6 +18,9 @@ class Select extends React.Component {
         });
       });
   }
+  componentWillUnmount() {
+    this.props.handleState("localStorageData", false);
+  }
   handleChange = (key, value) => {
     this.setState({
       [key]: value,

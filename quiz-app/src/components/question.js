@@ -10,16 +10,11 @@ class Question extends React.Component {
     };
   }
   componentDidMount() {
-    if (localStorage.data) {
-      const data = JSON.parse(localStorage.getItem("data"));
-      this.setState({
-        question: data.question,
-        answers: data.answers,
-        currentQuestion: data.currentQuestion,
-      });
-    }
+    localStorage.removeItem("data");
     this.setState({
-      question: this.props.questions,
+      question: this.props.state.questions,
+      currentQuestion: this.props.state.currentQuestion,
+      answers: this.props.state.answers,
     });
   }
   componentWillUnmount() {
@@ -32,6 +27,7 @@ class Question extends React.Component {
   }
 
   render() {
+    console.log(this.state);
     let question, index;
     if (this.state.question) {
       const copy = this.state.question.results;
@@ -125,7 +121,6 @@ class Question extends React.Component {
                 className="fs-20 btn"
                 onClick={() => {
                   this.props.handleState("result", this.state);
-                  this.props.handleState("lastData", false);
                 }}
               >
                 Submit
